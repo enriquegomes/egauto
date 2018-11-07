@@ -1,0 +1,11 @@
+.card-image{
+    min-height: 170px !important;    
+}
+
+.space-top-modal {
+    margin-top: 2em !important;
+}
+
+.seletor{
+    cursor: pointer;
+}

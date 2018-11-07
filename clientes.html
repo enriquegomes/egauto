@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes | EG Auto Peças</title>
+    <link rel="shortcut icon" href="img/icone.ico" />
+    <!-- Bibliotecas CSS -->
+    <link rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css" />
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="node_modules/izimodal/css/iziModal.min.css" />
+    <link rel="stylesheet" href="node_modules/jquery-confirm/dist/jquery-confirm.min.css" />
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Arquivos CSS -->
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/clientes.css" />
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <div class="card">
+                    <div class="card-image clientes-card-image">
+                        <span class="card-title"><b class="fa fa-users"> Clientes </b></span>
+                        <a class="btn-floating halfway-fab waves-effect waves-light trigger red" href=""><i class="material-icons">add</i></a>
+                    </div>
+                    <div class="card-content">
+                        <div class="container">
+                            <table class="centered">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>CPF</th>
+                                        <th>E-mail</th>
+                                        <th>Opções</th>
+
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td>Enrique Gomes</td>
+                                        <td>425.999.999-99</td>
+                                        <td>enrique.gomes@fatec.sp.gov.br</td>
+                                        <td><i class="material-icons deletar-user seletor">delete</i><i class="material-icons edit-user seletor">mode_edit</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Andrew Ribeiro</td>
+                                        <td>999.999.999-99</td>
+                                        <td>and@etec.sp.gov.br</td>
+                                        <td><i class="material-icons deletar-user seletor">delete</i><i class="material-icons edit-user seletor">mode_edit</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gabriel Ferreira</td>
+                                        <td>425.999.999-99</td>
+                                        <td>gabriel@etec.sp.gov.br</td>
+                                        <td><i class="material-icons deletar-user seletor">delete</i><i class="material-icons edit-user seletor">mode_edit</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Guilherme Souza</td>
+                                        <td>999.999.999-99</td>
+                                        <td>teste@gmail.com</td>
+                                        <td><i class="material-icons deletar-user seletor">delete</i><i class="material-icons edit-user seletor">mode_edit</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Alessandro Bezerra</td>
+                                        <td>425.999.999-99</td>
+                                        <td>teste@gmail.com</td>
+                                        <td><i class="material-icons deletar-user seletor">delete</i><i class="material-icons edit-user seletor">mode_edit</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Messi Ronaldo</td>
+                                        <td>999.999.999-99</td>
+                                        <td>teste@gmail.com</td>
+                                        <td><i class="material-icons deletar-user seletor">delete</i><i class="material-icons edit-user seletor">mode_edit</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Leonardo Scylla</td>
+                                        <td>425.999.999-99</td>
+                                        <td>teste@gmail.com</td>
+                                        <td><i class="material-icons deletar-user seletor">delete</i><i class="material-icons edit-user seletor">mode_edit</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cabo Daciolo</td>
+                                        <td>999.999.999-99</td>
+                                        <td>teste@gmail.com</td>
+                                        <td><i class="material-icons deletar-user seletor">delete</i><i class="material-icons edit-user seletor">mode_edit</i></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="iziModal" id="cadastrar-user">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 space-top-modal">
+                    <form id="cadastrar-user-form">
+
+                        <div class="input-field col">
+
+                            <i class="material-icons prefix">person</i>
+                            <input id="nome-cliente" type="text" class="validate" required>
+                            <label for="nome-cliente">Nome</label>
+                        </div>
+
+                        <div class="input-field col s8">
+
+                            <i class="material-icons prefix">featured_play_list</i>
+
+                            <input id="CPF" type="text" class="validate" required>
+                            <label for="CPF">CPF</label>
+                        </div>
+
+                        <div class="input-field col">
+
+                            <i class="material-icons prefix">email</i>
+
+                            <input id="email" type="text" class="validate" required>
+                            <label for="email">E-mail</label>
+                        </div>
+
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-12 center-align space-top-modal">
+                                    <button type="submit" class="btn waves-effect ">Cadastrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bibliotecas JS -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    <script src="node_modules/izimodal/js/iziModal.min.js"></script>
+    <script src="node_modules/jquery-confirm/dist/jquery-confirm.min.js"></script>
+    <script src="node_modules/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+    <!-- Arquivo JS -->
+    <script src="js/clientes.js"></script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+.produto-card-image{
+    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.5)),url(../img/car3.jpg);
+    background-size: 100%;
+}
+.close{
+    position: absolute;
+    left: 100px;
+}
