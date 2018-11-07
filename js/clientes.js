@@ -86,7 +86,7 @@ $(document).ready(function () {
                     isHidden: true
                 }
             },
-            onOpen: function(){
+            onOpen: function(){ 
                 $("#cpf").mask("999.999.999-99");
             }
             
