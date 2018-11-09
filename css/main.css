@@ -1,11 +1,36 @@
-.card-image{
-    min-height: 170px !important;    
+.card-image {
+    min-height: 170px !important;
 }
 
 .space-top-modal {
     margin-top: 2em !important;
 }
 
-.seletor{
+.seletor {
     cursor: pointer;
+}
+
+.img-menu {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(../img/rodas.jpg);
+    background-size: 100%;
+}
+
+.text-left-menu {
+    margin-left: 5px;
+    font-size: 20px;
+}
+
+header,
+main,
+footer {
+    padding-left: 300px;
+}
+
+@media only screen and (max-width : 992px) {
+
+    header,
+    main,
+    footer {
+        padding-left: 0;
+    }
 }

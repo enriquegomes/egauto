@@ -1,72 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EG Auto Peças</title>
-    <link rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css"/>
+    <link rel="shortcut icon" href="img/icone.ico" />
+    <!-- Bibliotecas CSS -->
+    <link rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css" />
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="node_modules/izimodal/css/iziModal.min.css" />
+    <link rel="stylesheet" href="node_modules/jquery-confirm/dist/jquery-confirm.min.css" />
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="shortcut icon" href="img/icone.ico"/>
+    <!-- Arquivos CSS -->
+    <link rel="stylesheet" href="css/main.css" />
 </head>
 
 <body>
-    <div class="row">
+    <ul id="slide-out" class="sidenav">
+        <li>
+            <div class="user-view">
+                <div class="background img-menu"></div><br />
+                <a class="white-text"><i class="material-icons white-text">build</i><b class="text-left-menu">EGAUTOPEÇAS</b></a>
+            </div>
+        </li>
+        <li>
+            <a class="waves-effect" href="#"><i class="fas fa-home fa-lg"></i>Home</a>
+            <a class="waves-effect" href="clientes.html"><i class="fas fa-user-alt fa-lg"></i>Clientes</a>
+            <a class="waves-effect" href="produtos.html"><i class="fas fa-align-justify fa-lg"></i>Produtos</a>
+        </li>
 
-      
-
-    </div>
-    <div class="parallax-container">
-        <div class="parallax"><img src="img/car.jpg"></div>
-    </div>
-
-    <div class="row">
-
-        <div class="col s12 m6 push-m3">
-            <p>dsfsdfasfsdafsdfsdfsdfsdfasdf<br/><br/>
-            sdfsfasdfasdfasfasdfasdfasdfasdf<br/><br/>
-            sdfafasdfasdfasfasfsdfasdfdsasfasdffs<br/><br/>
-             <p>dsfsdfasfsdafsdfsdfsdfsdfasdf<br/><br/>
-            sdfsfasdfasdfasfasdfasdfasdfasdf<br/><br/>
-            sdfafasdfasdfasfasfsdfasdfdsasfasdffs<br/><br/>
-             <p>dsfsdfasfsdafsdfsdfsdfsdfasdf<br/><br/>
-            sdfsfasdfasdfasfasdfasdfasdfasdf<br/><br/>
-            sdfafasdfasdfasfasfsdfasdfdsasfasdffs<br/><br/>
-            <p>dsfsdfasfsdafsdfsdfsdfsdfasdf<br/><br/>
-            sdfsfasdfasdfasfasdfasdfasdfasdf<br/><br/>
-            sdfafasdfasdfasfasfsdfasdfdsasfasdffs<br/><br/>
-             <p>dsfsdfasfsdafsdfsdfsdfsdfasdf<br/><br/>
-            sdfsfasdfasdfasfasdfasdfasdfasdf<br/><br/>
-            sdfafasdfasdfasfasfsdfasdfdsasfasdffs<br/><br/>
-             <p>dsfsdfasfsdafsdfsdfsdfsdfasdf<br/><br/>
-            sdfsfasdfasdfasfasdfasdfasdfasdf<br/><br/>
-            sdfafasdfasdfasfasfsdfasdfdsasfasdffs<br/><br/>
-        </div>
-
-    </div>
-
-    <div class="parallax-container">
-        <div class="parallax"><img src="img/dora.jpg"></div>
-    </div>
-
+    </ul>
     
-   
-    
-     <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <a class="btn btn-large waves-effect waves-light sidenav-trigger" data-target="slide-out"><i class="material-icons">menu</i></a>
+
+    <!-- Bibliotecas JS -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
-    <script src="js/produtos.js"></script>
-    
-     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.parallax');
-    var instances = M.Parallax.init(elems, options);
-  });
+    <script src="node_modules/izimodal/js/iziModal.min.js"></script>
+    <script src="node_modules/jquery-confirm/dist/jquery-confirm.min.js"></script>
+    <!-- Arquivo JS -->
+    <script src="js/main.js"></script>
 
-  // Or with jQuery
-
-  $(document).ready(function(){
-    $('.parallax').parallax();
-  });
-    
-    </script>
 </body>
+
 </html>
