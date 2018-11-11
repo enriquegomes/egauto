@@ -52,12 +52,76 @@ $(document).ready(function () {
             method: "GET",
             success: function (retorno) {
                 var listaProdutos = JSON.parse(retorno);
-
                 $(listaProdutos).each(function (indice, elemento) {
                     listagem.append("<tr><td>" + elemento.nome + "</td><td>" + elemento.quantidade + "</td><td><i class='material-icons deletar-prod seletor' data-idprod='" + elemento.id + "'>delete</i><i class='material-icons edit-prod seletor' data-idprod='" + elemento.id + "'>edit</i></td></tr>");
                 });
 
-                //Deletar Produtos    
+               
+
+                //Editar Produtos    
+
+                $(".edit-prod").on("click", function (event) {
+
+                    var editclick = $(this);
+
+                    var idprod = editclick[0].dataset.idprod;
+
+                    $.ajax("http://localhost:8080/egautopecas-api/produtos/editar/" + idprod, {
+                        success: function (retorno) {
+                            //Converte JSON em objeto JS
+                            var prod = JSON.parse(retorno);
+                            $.confirm({
+                                title: "Editar Item",
+                                icon: "fa fa-edit",
+                                content: "" +
+                                    "<form id='edit-prod-form'>" +
+                                    "<div class='input-field col'>" +
+                                    "<i class='material-icons prefix'>dvr</i>" +
+                                    "<input id='prod' type='text' class='validate' value='" + prod.nome + "' name='editname' required>" +
+                                    "<label for='prod'>Produto</label>" +
+                                    "</div>" +
+                                    "<div class='input-field col s7'>" +
+                                    "<i class='material-icons prefix'>content_paste</i>" +
+                                    "<input id='qtd' type='text' class='validate' value='" + prod.quantidade + "' name='editqtd' required>" +
+                                    "<label for='qtd'>Quantidade</label>" +
+                                    "</div>" +
+                                    "<div class='col'>" +
+                                    "<div class='row'>" +
+                                    "<div class='col-12 center-align space-top-modal'>" +
+                                    "<button type='submit' id='submit-edit' class='btn waves-effect'>Editar</button>" +
+                                    "</div>" +
+                                    "</div>" +
+                                    "</div>" +
+                                    "</form>",
+
+
+                                backgroundDismiss: true,
+                                closeIcon: true,
+                                buttons: {
+                                    dom: {
+                                        text: "dom",
+                                        isHidden: true,
+                                    }
+                                },
+                                onOpen: function () {
+                                    var labels = $("form#edit-prod-form").find("label");
+
+                                    labels.addClass("active");
+                                }
+
+
+
+                            });
+
+
+
+                        }
+                    });
+
+
+                });
+                
+                 //Deletar Produtos    
 
                 $(".deletar-prod").on("click", function (event) {
 
@@ -102,69 +166,6 @@ $(document).ready(function () {
                 });
 
 
-
-                //Editar Produtos    
-
-                $(".edit-prod").on("click", function (event) {
-
-                    var editclick = $(this);
-
-                    var idprod = editclick[0].dataset.idprod;
-
-                    $.ajax("http://localhost:8080/egautopecas-api/produtos/editar/" + idprod, {
-                        success: function (retorno) {
-                            //Converte JSON em objeto JS
-                            var prod = JSON.parse(retorno);
-                            $.confirm({
-                                title: "Editar Item",
-                                icon: "fa fa-edit",
-                                content: "" +
-                                    "<form id='edit-prod-form'>" +
-                                    "<div class='input-field col'>" +
-                                    "<i class='material-icons prefix'>dvr</i>" +
-                                    "<input id='prod' type='text' class='validate' value='" + prod.nome + "' required>" +
-                                    "<label for='prod'>Produto</label>" +
-                                    "</div>" +
-                                    "<div class='input-field col s7'>" +
-                                    "<i class='material-icons prefix'>content_paste</i>" +
-                                    "<input id='qtd' type='text' class='validate' value='" + prod.quantidade + "'required>" +
-                                    "<label for='qtd'>Quantidade</label>" +
-                                    "</div>" +
-                                    "<div class='col'>" +
-                                    "<div class='row'>" +
-                                    "<div class='col-12 center-align space-top-modal'>" +
-                                    "<button type='submit' id='submit-edit' class='btn waves-effect'>Editar</button>" +
-                                    "</div>" +
-                                    "</div>" +
-                                    "</div>" +
-                                    "</form>",
-
-
-                                backgroundDismiss: true,
-                                closeIcon: true,
-                                buttons: {
-                                    dom: {
-                                        text: "dom",
-                                        isHidden: true,
-                                    }
-                                },
-                                onOpen: function () {
-                                    var labels = $("form#edit-prod-form").find("label");
-
-                                    labels.addClass("active");
-                                }
-
-
-
-                            });
-
-
-
-                        }
-                    });
-
-
-                });
 
             }
         });
