@@ -56,7 +56,7 @@ $(document).ready(function () {
                     listagem.append("<tr><td>" + elemento.nome + "</td><td>" + elemento.quantidade + "</td><td><i class='material-icons deletar-prod seletor' data-idprod='" + elemento.id + "'>delete</i><i class='material-icons edit-prod seletor' data-idprod='" + elemento.id + "'>edit</i></td></tr>");
                 });
 
-               
+
 
                 //Editar Produtos    
 
@@ -68,21 +68,22 @@ $(document).ready(function () {
 
                     $.ajax("http://localhost:8080/egautopecas-api/produtos/editar/" + idprod, {
                         success: function (retorno) {
+
                             //Converte JSON em objeto JS
                             var prod = JSON.parse(retorno);
-                            $.confirm({
+                            var jc = $.confirm({
                                 title: "Editar Item",
                                 icon: "fa fa-edit",
                                 content: "" +
                                     "<form id='edit-prod-form'>" +
                                     "<div class='input-field col'>" +
                                     "<i class='material-icons prefix'>dvr</i>" +
-                                    "<input id='prod' type='text' class='validate' value='" + prod.nome + "' name='editname' required>" +
+                                    "<input id='prod' type='text' class='validate' value='" + prod.nome + "' name='nome' required>" +
                                     "<label for='prod'>Produto</label>" +
                                     "</div>" +
                                     "<div class='input-field col s7'>" +
                                     "<i class='material-icons prefix'>content_paste</i>" +
-                                    "<input id='qtd' type='text' class='validate' value='" + prod.quantidade + "' name='editqtd' required>" +
+                                    "<input id='qtd' type='text' class='validate' value='" + prod.quantidade + "' name='quantidade' required>" +
                                     "<label for='qtd'>Quantidade</label>" +
                                     "</div>" +
                                     "<div class='col'>" +
@@ -107,6 +108,29 @@ $(document).ready(function () {
                                     var labels = $("form#edit-prod-form").find("label");
 
                                     labels.addClass("active");
+
+                                    $("#edit-prod-form").on("submit", function (event) {
+                                        event.preventDefault();
+                                        var form = $("#edit-prod-form");
+                                        var formSerializado = form.serialize();
+                                        $.ajax("http://localhost:8080/egautopecas-api/produtos/editar/" + idprod, {
+                                            method: 'PUT',
+                                            data: formSerializado,
+                                            success: function (retorno) {
+                                                $.alert({
+                                                    title: "Produto editado com sucesso!",
+                                                    content: "",
+                                                    icon: "fa fa-check-circle green-text",
+                                                    theme: "modern",
+                                                });
+                                                jc.close(jc);
+                                                listarprodutos();
+                                            }
+
+                                        });
+                                    });
+
+
                                 }
 
 
@@ -120,8 +144,8 @@ $(document).ready(function () {
 
 
                 });
-                
-                 //Deletar Produtos    
+
+                //Deletar Produtos    
 
                 $(".deletar-prod").on("click", function (event) {
 

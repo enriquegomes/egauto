@@ -41,9 +41,9 @@ $(document).ready(function () {
     });
 
 
-    
+
     //Listar Clientes na Tabela
-    
+
     function listarclientes() {
 
         var listagem = $("#listagem-clientes");
@@ -60,25 +60,24 @@ $(document).ready(function () {
                 $(listaClientes).each(function (indice, elemento) {
                     listagem.append("<tr><td>" + elemento.nome + "</td><td>" + elemento.cpf + "</td><td>" + elemento.email + "</td><td><i class='material-icons deletar-user seletor' data-idprod='" + elemento.id + "'>delete</i><i class='material-icons edit-user seletor' data-idprod='" + elemento.id + "'>edit</i></td></tr>");
                 });
-                
-                
-                
+
+
+
                 //Editar Produtos  
 
                 $(".edit-user").on("click", function (event) {
-                    
+
                     var editclick = $(this);
 
                     var idclient = editclick[0].dataset.idprod;
 
                     $.ajax("http://localhost:8080/egautopecas-api/clientes/editar/" + idclient, {
-                        
+
                         success: function (retorno) {
-                            
+
                             //Converte JSON em objeto JS
                             var client = JSON.parse(retorno);
-                            
-                            $.confirm({
+                            var jc = $.confirm({
                                 title: "Editar cliente",
                                 icon: "fa fa-edit",
                                 content: "" +
@@ -86,19 +85,19 @@ $(document).ready(function () {
 
                                     "<div class='input-field col'>" +
                                     "<i class='material-icons prefix'>person</i>" +
-                                    "<input id='nome-cli' type='text' name='nomeedit' value='" + client.nome + "' class='validate' required>" +
+                                    "<input id='nome-cli' type='text' name='nome' value='" + client.nome + "' class='validate' required>" +
                                     "<label for='nome-cli'>Nome</label>" +
                                     "</div>" +
 
                                     "<div class='input-field col'>" +
                                     "<i class='material-icons prefix'>featured_play_list</i>" +
-                                    "<input id='cpf' type='text' name='cpfedit' value='" + client.cpf + "' class='validate' required>" +
+                                    "<input id='cpf' type='text' name='cpf' value='" + client.cpf + "' class='validate' required>" +
                                     "<label for='cpf'>CPF</label>" +
                                     "</div>" +
 
                                     "<div class='input-field col'>" +
                                     "<i class='material-icons prefix'>email</i>" +
-                                    "<input id='mail' type='text' name='emailedit' value='" + client.email + "' class='validate' required>" +
+                                    "<input id='mail' type='text' name='email' value='" + client.email + "' class='validate' required>" +
                                     "<label for='mail'>E-mail</label>" +
                                     "</div>" +
 
@@ -120,13 +119,78 @@ $(document).ready(function () {
                                 },
 
                                 onOpen: function () {
-                                    var labels = $("form#edit-prod-form").find("label");
+                                    var labels = $("form#edit-user-form").find("label");
 
                                     labels.addClass("active");
+
+                                    $("#edit-user-form").on("submit", function (event) {
+                                        event.preventDefault();
+                                        var form = $("#edit-user-form");
+                                        var formSerializado = form.serialize();
+                                        $.ajax("http://localhost:8080/egautopecas-api/clientes/editar/" + idclient, {
+                                            method: 'PUT',
+                                            data: formSerializado,
+                                            success: function (retorno) {
+                                                $.alert({
+                                                    title: "Cliente editado com sucesso!",
+                                                    content: "",
+                                                    icon: "fa fa-check-circle green-text",
+                                                    theme: "modern",
+                                                });
+                                                jc.close(jc);
+                                                listarclientes();
+                                            }
+
+                                        });
+                                    });
                                 }
 
                             });
                         }
+                    });
+                });
+
+                //Deletar Produtos    
+
+                $(".deletar-user").on("click", function (event) {
+
+                    var elementoSendoClicado = $(this);
+
+                    var idCliente = elementoSendoClicado[0].dataset.idprod;
+
+                    $.confirm({
+                        title: 'Excluir',
+                        content: 'Deseja realmente excluir este item?',
+                        icon: "fa fa-trash",
+                        buttons: {
+                            confirm: {
+                                text: 'Sim',
+                                btnClass: 'btn waves-effect',
+                                action: function () {
+
+                                    $.ajax("http://localhost:8080/egautopecas-api/clientes/deletar/" + idCliente, {
+                                        type: "DELETE",
+                                        success: function () {
+                                            $.alert({
+                                                title: "Produto excluido",
+                                                content: null,
+                                                icon: "fa fa-trash black-text",
+                                                theme: "modern"
+                                            });
+                                            listarclientes();
+                                        }
+                                    });
+
+
+
+                                }
+                            },
+                            cancelar: function () {
+
+                            }
+                        },
+                        theme: 'modern'
+
                     });
                 });
 
@@ -136,4 +200,4 @@ $(document).ready(function () {
     listarclientes();
 });
 
-    // $("#cpf").mask("999.999.999-99");
+// $("#cpf").mask("999.999.999-99");

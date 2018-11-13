@@ -31,6 +31,7 @@
             <a class="waves-effect" href="index.html"><i class="fas fa-home fa-lg"></i>Home</a>
             <a class="waves-effect" href="#"><i class="fas fa-user-alt fa-lg"></i>Clientes</a>
             <a class="waves-effect" href="produtos.html"><i class="fas fa-align-justify fa-lg"></i>Produtos</a>
+            <a class="waves-effect" href="pedidos.html"><i class="fas fa-suitcase fa-lg"></i>Pedidos</a>
         </li>
     </ul>
     <a href="#" class="btn waves-effect waves-light sidenav-trigger" data-target="slide-out"><i class="material-icons">menu</i></a>
@@ -66,48 +67,52 @@
                 </div>
             </div>
         </div>
-    </main>
-    <div class="iziModal" id="cadastrar-user">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 space-top-modal">
-                    <form id="cadastrar-user-form">
+        
+        <!-- IziModal -->
+        
+        <div class="iziModal" id="cadastrar-user">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 space-top-modal">
+                        <form id="cadastrar-user-form">
 
-                        <div class="input-field col">
+                            <div class="input-field col">
 
-                            <i class="material-icons prefix">person</i>
-                            <input id="nome-cliente" type="text" name="nome" class="validate" required>
-                            <label for="nome-cliente">Nome</label>
-                        </div>
+                                <i class="material-icons prefix">person</i>
+                                <input id="nome-cliente" type="text" name="nome" class="validate" required>
+                                <label for="nome-cliente">Nome</label>
+                            </div>
 
-                        <div class="input-field col s8">
+                            <div class="input-field col s8">
 
-                            <i class="material-icons prefix">featured_play_list</i>
+                                <i class="material-icons prefix">featured_play_list</i>
 
-                            <input id="CPF" type="text" class="validate" name="cpf" required>
-                            <label for="CPF">CPF</label>
-                        </div>
+                                <input id="CPF" type="text" class="validate" name="cpf" required>
+                                <label for="CPF">CPF</label>
+                            </div>
 
-                        <div class="input-field col">
+                            <div class="input-field col">
 
-                            <i class="material-icons prefix">email</i>
+                                <i class="material-icons prefix">email</i>
 
-                            <input id="email" type="text" class="validate" name="email" required>
-                            <label for="email">E-mail</label>
-                        </div>
+                                <input id="email" type="text" class="validate" name="email" required>
+                                <label for="email">E-mail</label>
+                            </div>
 
-                        <div class="col">
-                            <div class="row">
-                                <div class="col-12 center-align space-top-modal">
-                                    <button type="submit" class="btn waves-effect ">Cadastrar</button>
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col-12 center-align space-top-modal">
+                                        <button type="submit" class="btn waves-effect ">Cadastrar</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
+
 
     <!-- Bibliotecas JS -->
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
