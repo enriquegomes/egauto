@@ -2,84 +2,99 @@
 <html lang="pt-br">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pedidos | EG Auto Peças</title>
-  <link rel="shortcut icon" href="img/icone.ico" />
-  <!-- Bibliotecas CSS -->
-  <link rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css" />
-  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-grid.min.css" />
-  <link rel="stylesheet" href="node_modules/izimodal/css/iziModal.min.css" />
-  <link rel="stylesheet" href="node_modules/jquery-confirm/dist/jquery-confirm.min.css" />
-  <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- Arquivos CSS -->
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="css/pedidos.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos | EG Auto Peças</title>
+    <link rel="shortcut icon" href="img/icone.ico" />
+    <!-- Bibliotecas CSS -->
+    <link rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css" />
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="node_modules/izimodal/css/iziModal.min.css" />
+    <link rel="stylesheet" href="node_modules/jquery-confirm/dist/jquery-confirm.min.css" />
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Arquivos CSS -->
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/pedidos.css" />
 </head>
 
 <body>
-  <ul id="slide-out" class="sidenav sidenav-fixed">
-    <li>
-      <div class="user-view">
-        <div class="background img-menu"></div><br />
-        <a class="white-text"><i class="material-icons white-text">build</i><b class="text-left-menu">EGAUTOPEÇAS</b></a>
-      </div>
-    </li>
-    <li>
-      <a class="waves-effect" href="index.html"><i class="fas fa-home fa-lg"></i>Home</a>
-      <a class="waves-effect" href="clientes.html"><i class="fas fa-user-alt fa-lg"></i>Clientes</a>
-      <a class="waves-effect" href="produtos.html"><i class="fas fa-align-justify fa-lg"></i>Produtos</a>
-      <a class="waves-effect" href="#"><i class="fas fa-suitcase fa-lg"></i>Pedidos</a>
-    </li>
-  </ul>
-
-  <a class="btn btn-large waves-effect waves-light sidenav-trigger" data-target="slide-out"><i class="material-icons">menu</i></a>
-  <main>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-10">
-          <div class="card">
-            <div class="card-image pedidos-card-image">
-
-              <span class="card-title"><i class="fas fa-suitcase"></i><b> Pedidos </b></span>
-
-              <a class="btn-floating halfway-fab waves-effect waves-light trigger red" href="" id="btn-pedido"><i class="material-icons">add</i></a>
+    <ul id="slide-out" class="sidenav sidenav-fixed">
+        <li>
+            <div class="user-view">
+                <div class="background img-menu"></div><br />
+                <a class="white-text"><i class="material-icons white-text">build</i><b class="text-left-menu">EGAUTOPEÇAS</b></a>
             </div>
-          </div>
-        </div>
-      </div>
-  </main>
+        </li>
+        <li>
+            <a class="waves-effect" href="index.html"><i class="fas fa-home fa-lg"></i>Home</a>
+            <a class="waves-effect" href="clientes.html"><i class="fas fa-user-alt fa-lg"></i>Clientes</a>
+            <a class="waves-effect" href="produtos.html"><i class="fas fa-align-justify fa-lg"></i>Produtos</a>
+            <a class="waves-effect" href="#"><i class="fas fa-suitcase fa-lg"></i>Pedidos</a>
+        </li>
+    </ul>
 
-  <div class="iziModal" id="modal-pedido">
-    <div class="container">
-      <div class="row" style="min-height: 40vh;">
-        <div class="col-sm-6">
-          <div class="input-field col s12">
-            <select id="select-produtos">
+    <a class="btn btn-large waves-effect waves-light sidenav-trigger" data-target="slide-out"><i class="material-icons">menu</i></a>
+    <main>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <div class="card">
+                        <div class="card-image pedidos-card-image">
 
-            </select>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="input-field col s12">
-            <select id="select-clientes">
+                            <span class="card-title"><i class="fas fa-suitcase"></i><b> Pedidos </b></span>
 
-            </select>
-          </div>
+                            <a class="btn-floating halfway-fab waves-effect waves-light trigger red" href="" id="btn-pedido"><i class="material-icons">add</i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+
+
+    <!-- IziModal -->
+
+    <div class="iziModal" id="modal-pedido">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-10 space-top-modal">
+                    <form id="cadastrar-user-form">
+                        <div class="input-field col s12">
+                            <select id="selectprod">
+
+                            </select>
+                        </div>
+                        <div class="input-field col s12">
+                            <select id="select-clientes">
+
+                            </select>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="quantidade" id="quantidade" type="number" class="validate">
+                            <label for="quantidade">Quantidade</label>
+                        </div>
+
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-12 center-align space-top-modal">
+                                    <button type="submit" class="btn waves-effect ">Confirmar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 
-  <!-- Bibliotecas JS -->
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
-  <script src="node_modules/izimodal/js/iziModal.min.js"></script>
-  <script src="node_modules/jquery-confirm/dist/jquery-confirm.min.js"></script>
-  <!-- Arquivo JS -->
-  <script src="js/main.js"></script>
-  <script src="js/pedidos.js"></script>
+    <!-- Bibliotecas JS -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    <script src="node_modules/izimodal/js/iziModal.min.js"></script>
+    <script src="node_modules/jquery-confirm/dist/jquery-confirm.min.js"></script>
+    <!-- Arquivo JS -->
+    <script src="js/main.js"></script>
+    <script src="js/pedidos.js"></script>
 
 </body>
 
