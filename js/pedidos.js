@@ -3,8 +3,8 @@ $(document).ready(function () {
     function carregarClientes(){
         var selectClientes = $("#select-clientes");
         //selectClientes.html("");
-        
-        $.ajax("http://localhost:8080/egautopecas-api/clientes", {
+
+        /*$.ajax("http://localhost:8080/egautopecas-api/clientes", {
             method: "GET",
             success: function (retorno) {
                 var listaClientes = JSON.parse(retorno);
@@ -13,10 +13,24 @@ $(document).ready(function () {
                     selectClientes.append("<option value='" + elemento.id + "'>" + elemento.nome + "</option>");
                 });
             }
+        });*/
+
+        //Como eu tava sem seu backend, eu fiz uma simulação do ajax
+
+        new Promise(function(resolve, reject){
+          setTimeout(function(){
+            resolve('[{"id":32, "nome":"Enrique Gomes", "email": "enriquegomes@hotmail.com"}, {"id": 432, "nome":"Andrew", "email":"andtankian@live.com"}]');
+          }, 500);
+        }).then(function(retorno){
+          var listaClientes = JSON.parse(retorno);
+          console.log(listaClientes);
+          $(listaClientes).each(function(indice, elemento){
+            selectClientes.append("<option value='" + elemento.id + "'>" + elemento.nome + "</option>");
+          });
+          selectClientes.formSelect();
         });
-            
+
     }
-    carregarClientes();
 
     function carregarProdutos() {
         var select_produtos = $("#selectprod");
@@ -36,30 +50,20 @@ $(document).ready(function () {
     }
     carregarProdutos();
 
-    /*//inicializando izimodal
-    var izimodal = $("#pedido").iziModal({
-        title: "Novo Pedido",
-        subtitle: "Preencha os  campos para completar o pedido.",
-        headerColor: "linear-gradient(90deg, rgba(80,0,0,1) 0%, rgba(147,0,0,1) 54%, rgba(48,0,0,1) 100%)",
-
-        onOpening: function () {
-            
-            
-            $("#select-prod").formSelect();
-
-        }
-
-
+    var modal_pedido = $("#modal-pedido").iziModal({
+      title: "Novo pedido",
+      subtitle: "Entre com os dados do novo pedido",
+      headerColor: "rgb(51, 95, 126)",
+      onOpening: function(){
+        carregarClientes();
+      }
     });
 
-    //Evento Click IziModal
 
-    $(".trigger").on('click', function (event) {
-
-        event.preventDefault();
-        izimodal.iziModal('open');
-
-    });*/
+    $("#btn-pedido").click(function(e){
+      e.preventDefault();
+      modal_pedido.iziModal("open");
+    });
 
 
 });
